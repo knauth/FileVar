@@ -65,7 +65,7 @@ fs::path FileVar::get_good_path(){
     return root_dir /= to_string(stoi(last) + 1);
 }
 
-string FileVar::get_content_string(){
+string FileVar::get_string(){
     ifstream file(my_path);
     
     string out;
@@ -75,7 +75,7 @@ string FileVar::get_content_string(){
     return out;
 }
 
-int FileVar::get_content_int(){
+int FileVar::get_int(){
     if(type != "int"){
         cout << "Can't output this as int, returned 0" << endl;
         return 0;

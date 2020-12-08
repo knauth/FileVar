@@ -25,6 +25,5 @@ int main(){
     
     fv1.delete_var();
     fv2.delete_var();
-    
     return 0;
 }
