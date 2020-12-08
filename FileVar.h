@@ -31,6 +31,8 @@ public:
     
     bool delete_var();
     
+    string get_content_string();
+    int get_content_int();
     
     friend ostream& operator<< (ostream&, FileVar&);
 };

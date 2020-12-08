@@ -65,10 +65,38 @@ fs::path FileVar::get_good_path(){
     return root_dir /= to_string(stoi(last) + 1);
 }
 
+string FileVar::get_content_string(){
+    ifstream file(my_path);
+    
+    string out;
+    getline(file, out);
+    file.close();
+    
+    return out;
+}
+
+int FileVar::get_content_int(){
+    if(type != "int"){
+        cout << "Can't output this as int, returned 0" << endl;
+        return 0;
+    }
+    
+    ifstream file(my_path);
+    
+    string out;
+    getline(file, out);
+    file.close();
+
+    return stoi(out);
+}
+
 FileVar::~FileVar(){}
 
 bool FileVar::delete_var(){
     return fs::remove(my_path);
 }
 
-ostream& operator<< (ostream& out, FileVar& fv){return out;}
+ostream& operator<< (ostream& out, FileVar& fv){
+    out << fv.get_content_string();
+    return out;
+}
