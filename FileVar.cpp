@@ -45,6 +45,22 @@ FileVar::FileVar(string s, fs::path in_path){
     file.close();
 }
 
+FileVar::FileVar(fs::path in_path){
+    string my_ext = in_path.extension();
+    if(my_ext != ".int" && my_ext != ".string"){
+        cout << "Invalid File!" << endl;
+        return;
+    }
+    if(!fs::exists(in_path)){
+        cout << "File Does Not Exist!" << endl;
+        return;
+    }
+    
+    my_path = in_path;
+    root_dir = in_path.parent_path();
+    type = my_ext.substr(1, string::npos);
+}
+
 fs::path FileVar::get_good_path(){
     vector<fs::path> paths;
     for(auto& p: fs::directory_iterator(root_dir)){
@@ -90,6 +106,10 @@ int FileVar::get_int(){
     return stoi(out);
 }
 
+fs::path FileVar::get_path(){
+    return my_path;
+    }
+    
 FileVar::~FileVar(){}
 
 bool FileVar::delete_var(){
@@ -97,6 +117,6 @@ bool FileVar::delete_var(){
 }
 
 ostream& operator<< (ostream& out, FileVar& fv){
-    out << fv.get_content_string();
+    out << fv.get_string();
     return out;
 }

@@ -19,20 +19,21 @@ private:
     string type;
     fs::path my_path;
     fs::path root_dir;
-    
     fs::path get_good_path();
 
 public:    
     FileVar();
     FileVar(int, fs::path);
     FileVar(string, fs::path);
+    FileVar(fs::path);
     
     ~FileVar();
     
     bool delete_var();
     
-    string get_content_string();
-    int get_content_int();
+    string get_string();
+    int get_int();
+    fs::path get_path();
     
     friend ostream& operator<< (ostream&, FileVar&);
 };
