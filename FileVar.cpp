@@ -10,7 +10,7 @@ namespace fs = std::filesystem;
 
 /*
 Created 21:15 17/17/2020
-@author: cknau
+@author: knauth
 */
 
 FileVar::FileVar(){
