@@ -9,7 +9,7 @@ namespace fs=filesystem;
 
 /*
 Created 21:15 17/17/2020
-@author: cknau
+@author: knauth
 */
 #ifndef _FileVar_
 #define _FileVar_
